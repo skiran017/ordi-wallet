@@ -36,8 +36,6 @@ function Home() {
     }
   };
 
-  console.log({ network });
-
   if (!unisatInstalled) {
     return (
       <chakra.header>

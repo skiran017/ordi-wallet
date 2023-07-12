@@ -8,25 +8,30 @@ import {
   useColorModeValue,
   Icon,
   chakra,
-  Tooltip,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react';
 
 import CustomButton from './CustomButton';
 
-const data = {
-  imageURL:
-    'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-  name: 'Nature',
-  inscriptionNumber: 15997,
-  contentType: 'img/text',
-  content: 'URL',
-  postageValue: 'outputValue', //in sats,
-  timeStamp: '',
-};
+interface ListCardInt {
+  listItem: {
+    inscriptionNumber: number;
+    contentType: string;
+    content: string;
+    postageValue: number; //in sats,
+    timeStamp: number;
+  };
+}
 
-function ListCard() {
+function ListCard({ listItem }: ListCardInt) {
   return (
-    <Flex w="full" alignItems="center" justifyContent="center">
+    <Flex
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+      key={listItem.inscriptionNumber}
+    >
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         maxW="sm"
@@ -35,10 +40,14 @@ function ListCard() {
         shadow="lg"
         position="relative"
         border="2px solid orange"
+        width="300px"
       >
         <Image
-          src={data.imageURL}
-          alt={`Picture of ${data.name}`}
+          src={
+            listItem.content ||
+            'https://spoiltpig.co.uk/wp-content/plugins/responsive-menu/v4.0.0/assets/images/no-preview.jpeg'
+          }
+          alt={`Picture of ${listItem.inscriptionNumber}`}
           roundedTop="lg"
           height="300px"
           width="300px"
@@ -53,7 +62,7 @@ function ListCard() {
               lineHeight="tight"
               isTruncated
             >
-              {data.name}
+              {listItem.inscriptionNumber}
             </Box>
 
             <CustomButton
