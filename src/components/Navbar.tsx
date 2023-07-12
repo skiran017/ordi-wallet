@@ -17,33 +17,37 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={'#'}
-  >
-    {children}
-  </Link>
-);
+import { useStateContext } from '../context';
+import CustomButton from './CustomButton';
 
 function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    unisatInstalled,
+    connected,
+    address,
+    balance,
+    handleAccountsChanged,
+    network,
+    setNetwork,
+  } = useStateContext();
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <Flex h="74px" alignItems={'center'} justifyContent={'space-between'}>
           <Box>Logo</Box>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
+              {connected ? (
+                <Flex>
+                  <CustomButton
+                    title={address?.slice(0, 6) + '...' + address?.slice(32)}
+                  />
+                  {/* <CustomButton title={`Balance: ${balance?.total}`} /> */}
+                </Flex>
+              ) : null}
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>

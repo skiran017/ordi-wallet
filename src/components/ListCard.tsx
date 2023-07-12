@@ -17,8 +17,11 @@ const data = {
   imageURL:
     'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
   name: 'Nature',
-  preview: 'imgURL',
   inscriptionNumber: 15997,
+  contentType: 'img/text',
+  content: 'URL',
+  postageValue: 'outputValue', //in sats,
+  timeStamp: '',
 };
 
 function ListCard() {

@@ -8,6 +8,10 @@ import {
   Box,
   Flex,
   chakra,
+  CardBody,
+  CardHeader,
+  Text,
+  Divider,
 } from '@chakra-ui/react';
 import ListInscriptions from './ListInscriptions';
 import CustomButton from './CustomButton';
@@ -41,54 +45,59 @@ function Home() {
     <Box>
       <chakra.header>
         {connected ? (
-          <Flex direction="column" alignItems="center">
-            <Card
-              size="small"
-              title="Basic Info"
-              style={{ width: 300, margin: 10 }}
+          <Box p={2}>
+            <Flex
+              justifyContent="space-between"
+              alignItems="center"
+              maxH="260px"
             >
-              <div style={{ textAlign: 'left', marginTop: 10 }}>
-                <div style={{ fontWeight: 'bold' }}>Address:</div>
-                <div style={{ wordWrap: 'break-word' }}>{address}</div>
-              </div>
+              <Text
+                textAlign="center"
+                w="full"
+                fontWeight="bold"
+                fontSize="36px"
+              >
+                View and Send your Ordinal Inscriptions
+              </Text>
+              <Card size="small" w="250px">
+                <CardBody>
+                  <Box textAlign="left" p={'10px'}>
+                    <Box fontWeight="bold">Network:</Box>
+                    <RadioGroup
+                      onChange={async (e: any) => {
+                        const network = await unisat.switchNetwork(
+                          e.target.value
+                        );
+                        setNetwork(network);
+                      }}
+                      value={network}
+                    >
+                      <Radio p={2} value={'livenet'}>
+                        livenet
+                      </Radio>
+                      <Radio p={2} value={'testnet'}>
+                        testnet
+                      </Radio>
+                    </RadioGroup>
+                  </Box>
+                  <Flex flexWrap="wrap" textAlign="left" p={'10px'}>
+                    <Box fontWeight="bold">Balance:</Box>
+                    <chakra.p p="0 6px" fontWeight="semibold">
+                      {balance?.total} sats
+                    </chakra.p>
+                  </Flex>
+                </CardBody>
+              </Card>
 
-              {/* <div style={{ textAlign: "left", marginTop: 10 }}>
-                <div style={{ fontWeight: "bold" }}>PublicKey:</div>
-                <div style={{ wordWrap: "break-word" }}>{publicKey}</div>
-              </div> */}
-
-              <div style={{ textAlign: 'left', marginTop: 10 }}>
-                <div style={{ fontWeight: 'bold' }}>Balance: (Satoshis)</div>
-                <div style={{ wordWrap: 'break-word' }}>{balance?.total}</div>
-              </div>
-            </Card>
-            <Card
-              size="small"
-              title="Switch Network"
-              style={{ width: 300, margin: 10 }}
-            >
-              <div style={{ textAlign: 'left', marginTop: 10 }}>
-                <div style={{ fontWeight: 'bold' }}>Network:</div>
-                <RadioGroup
-                  onChange={async (e: any) => {
-                    const network = await unisat.switchNetwork(e.target.value);
-                    setNetwork(network);
-                  }}
-                  value={network}
-                >
-                  <Radio value={'livenet'}>livenet</Radio>
-                  <Radio value={'testnet'}>testnet</Radio>
-                </RadioGroup>
-              </div>
-            </Card>
-
-            {/* <SignPsbtCard />
+              {/* <SignPsbtCard />
             <SignMessageCard />
             <PushTxCard />
             <PushPsbtCard />
             <SendBitcoin /> */}
+            </Flex>
+            <Divider />
             <ListInscriptions />
-          </Flex>
+          </Box>
         ) : (
           <Flex h="90vh" justifyContent="center" alignItems="center">
             <CustomButton
