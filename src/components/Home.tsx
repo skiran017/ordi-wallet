@@ -27,6 +27,17 @@ function Home() {
     setNetwork,
   } = useStateContext();
 
+  const handleNetworkChange = async (e: string) => {
+    try {
+      const network = await unisat.switchNetwork(e);
+      setNetwork(network);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log({ network });
+
   if (!unisatInstalled) {
     return (
       <chakra.header>
@@ -63,15 +74,7 @@ function Home() {
                 <CardBody>
                   <Box textAlign="left" p={'10px'}>
                     <Box fontWeight="bold">Network:</Box>
-                    <RadioGroup
-                      onChange={async (e: any) => {
-                        const network = await unisat.switchNetwork(
-                          e.target.value
-                        );
-                        setNetwork(network);
-                      }}
-                      value={network}
-                    >
+                    <RadioGroup onChange={handleNetworkChange} value={network}>
                       <Radio p={2} value={'livenet'}>
                         livenet
                       </Radio>
