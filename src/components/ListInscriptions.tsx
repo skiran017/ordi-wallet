@@ -73,8 +73,6 @@ function ListInscriptions() {
     }
   };
 
-  // console.log({ result });
-
   React.useEffect(() => {
     if (address) {
       getUserInscriptionList();

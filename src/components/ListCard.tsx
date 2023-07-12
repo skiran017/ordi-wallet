@@ -66,7 +66,7 @@ function ListCard({ listItem }: ListCardInt) {
             </Box>
 
             <CustomButton
-              onClick={() => console.log('send')}
+              onClick={() => console.log({ listItem })}
               btnType="button"
               title="Send"
             />
