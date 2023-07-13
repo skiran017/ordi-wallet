@@ -2,6 +2,7 @@ import React from 'react';
 import { useStateContext } from '../context';
 import { chakra, Box, Flex, Grid } from '@chakra-ui/react';
 import ListCard from './ListCard';
+import CustomButton from './CustomButton';
 
 // const result = {
 //   list: [
@@ -102,7 +103,15 @@ function ListInscriptions() {
       >
         {result
           ? result?.list?.map((listItem: any) => (
-              <ListCard listItem={listItem} />
+              <Flex direction="column" border="2px solid orange" rounded={10}>
+                <ListCard listItem={listItem} />
+                <CustomButton
+                  onClick={() => console.log(listItem.inscriptionId)}
+                  btnType="button"
+                  title="Send"
+                  roundedTop={0}
+                />
+              </Flex>
             ))
           : null}
       </Grid>

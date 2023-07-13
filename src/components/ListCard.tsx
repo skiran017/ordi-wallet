@@ -36,10 +36,9 @@ function ListCard({ listItem }: ListCardInt) {
         bg={useColorModeValue('white', 'gray.800')}
         maxW="sm"
         borderWidth="1px"
-        rounded="lg"
+        roundedTop="lg"
         shadow="lg"
         position="relative"
-        border="2px solid orange"
         width="300px"
       >
         <Image
@@ -64,12 +63,6 @@ function ListCard({ listItem }: ListCardInt) {
             >
               {listItem.inscriptionNumber}
             </Box>
-
-            <CustomButton
-              onClick={() => console.log({ listItem })}
-              btnType="button"
-              title="Send"
-            />
           </Flex>
         </Box>
       </Box>
