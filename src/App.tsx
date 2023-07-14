@@ -10,9 +10,12 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './components/ColorModeSwitcher';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <h1>Helooo</h1>
+    <Navbar />
+    <Home />
   </ChakraProvider>
 );
