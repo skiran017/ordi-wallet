@@ -3,6 +3,7 @@ import { useStateContext } from '../context';
 import { chakra, Box, Flex, Grid } from '@chakra-ui/react';
 import ListCard from './ListCard';
 import CustomButton from './CustomButton';
+import SendAddressModal from './SendAddressModal';
 
 // const result = {
 //   list: [
@@ -81,9 +82,9 @@ function ListInscriptions() {
   }, []);
 
   return (
-    <Box p="8px">
+    <Box p={6}>
       <chakra.h1
-        mb="12px"
+        mb="22px"
         fontWeight="semibold"
         fontSize="20px"
         textAlign={{ base: 'center', md: 'left' }}
@@ -97,20 +98,20 @@ function ListInscriptions() {
           base: 'repeat(1, 1fr)',
           sm: 'repeat(2, 1fr)',
           md: 'repeat(3, 1fr)',
-          lg: 'repeat(4, 1fr)',
+          lg: 'repeat(5, 1fr)',
         }}
         gap={6}
       >
         {result
           ? result?.list?.map((listItem: any) => (
-              <Flex direction="column" border="2px solid orange" rounded={10}>
+              <Flex
+                direction="column"
+                border="2px solid orange"
+                rounded={10}
+                key={listItem.inscriptionId}
+              >
                 <ListCard listItem={listItem} />
-                <CustomButton
-                  onClick={() => console.log(listItem.inscriptionId)}
-                  btnType="button"
-                  title="Send"
-                  roundedTop={0}
-                />
+                <SendAddressModal />
               </Flex>
             ))
           : null}
