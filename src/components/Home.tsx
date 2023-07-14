@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStateContext } from '../context';
 import {
-  Button,
   Card,
   RadioGroup,
   Radio,
@@ -9,7 +8,6 @@ import {
   Flex,
   chakra,
   CardBody,
-  CardHeader,
   Text,
   Divider,
 } from '@chakra-ui/react';
@@ -88,12 +86,6 @@ function Home() {
                   </Flex>
                 </CardBody>
               </Card>
-
-              {/* <SignPsbtCard />
-            <SignMessageCard />
-            <PushTxCard />
-            <PushPsbtCard />
-            <SendBitcoin /> */}
             </Flex>
             <Divider />
             <ListInscriptions />
