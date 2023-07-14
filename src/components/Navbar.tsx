@@ -10,6 +10,7 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
+  chakra,
   useColorModeValue,
   Stack,
   useColorMode,
@@ -27,7 +28,9 @@ function Navbar() {
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h="74px" alignItems={'center'} justifyContent={'space-between'}>
-          <Box>Logo</Box>
+          <chakra.p fontSize="20px" fontWeight="semibold">
+            OrdWallet
+          </chakra.p>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
