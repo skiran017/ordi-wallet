@@ -17,12 +17,15 @@ import {
 } from '@chakra-ui/react';
 import CustomButton from './CustomButton';
 import { isValidBTCAddress } from '../utils/helpers';
+import { useStateContext } from '../context';
 
-function SendAddressModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+function SendAddressModal({ listItem }: any) {
   const [value, setValue] = useState('');
   const [validAddress, setValidAddress] = useState<boolean>();
+  const unisat = (window as any).unisat;
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { balance } = useStateContext();
 
   function handleInputChange(evt: React.ChangeEvent<HTMLInputElement>) {
     let valid = false;
@@ -42,8 +45,21 @@ function SendAddressModal() {
     setValidAddress(undefined);
   }
 
-  function handleSend() {
-    console.log('send');
+  async function handleSend() {
+    if (listItem) {
+      try {
+        const tx = await unisat.sendInscription(
+          value,
+          listItem.inscriptionId
+          // {feeRate:15} optional
+        );
+        console.log({ tx });
+        console.log('send');
+        handleClose();
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 
   return (

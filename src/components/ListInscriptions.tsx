@@ -64,7 +64,7 @@ function ListInscriptions() {
     list: [],
     total: 0,
   });
-  const { unisatInstalled, connected, address } = useStateContext();
+  const { address, balance } = useStateContext();
   const unisat = (window as any).unisat;
   const getUserInscriptionList = async () => {
     try {
@@ -79,7 +79,7 @@ function ListInscriptions() {
     if (address) {
       getUserInscriptionList();
     }
-  }, []);
+  }, [address, balance]);
 
   return (
     <Box p={6}>
@@ -108,10 +108,10 @@ function ListInscriptions() {
                 direction="column"
                 border="2px solid orange"
                 rounded={10}
-                key={listItem.inscriptionId}
+                key={listItem?.inscriptionId}
               >
                 <ListCard listItem={listItem} />
-                <SendAddressModal />
+                <SendAddressModal listItem={listItem} />
               </Flex>
             ))
           : null}
