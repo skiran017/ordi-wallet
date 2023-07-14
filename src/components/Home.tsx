@@ -20,7 +20,6 @@ function Home() {
   const {
     unisatInstalled,
     connected,
-    address,
     balance,
     handleAccountsChanged,
     network,

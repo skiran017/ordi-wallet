@@ -1,18 +1,5 @@
 import React from 'react';
-import {
-  Flex,
-  Circle,
-  Box,
-  Image,
-  Badge,
-  useColorModeValue,
-  Icon,
-  chakra,
-  Grid,
-  GridItem,
-} from '@chakra-ui/react';
-
-import CustomButton from './CustomButton';
+import { Flex, Box, Image, useColorModeValue } from '@chakra-ui/react';
 
 interface ListCardInt {
   listItem: {
@@ -35,7 +22,6 @@ function ListCard({ listItem }: ListCardInt) {
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         maxW="sm"
-        borderWidth="1px"
         roundedTop="lg"
         shadow="lg"
         position="relative"
@@ -49,7 +35,7 @@ function ListCard({ listItem }: ListCardInt) {
           alt={`Picture of ${listItem.inscriptionNumber}`}
           roundedTop="lg"
           height="300px"
-          width="300px"
+          width="250px"
         />
 
         <Box p="4">
