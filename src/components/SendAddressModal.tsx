@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import {
   chakra,
-  Box,
-  Flex,
-  Grid,
-  Button,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -17,7 +13,6 @@ import {
 } from '@chakra-ui/react';
 import CustomButton from './CustomButton';
 import { isValidBTCAddress } from '../utils/helpers';
-import { useStateContext } from '../context';
 
 function SendAddressModal({ listItem }: any) {
   const [value, setValue] = useState('');
@@ -25,7 +20,6 @@ function SendAddressModal({ listItem }: any) {
   const unisat = (window as any).unisat;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { balance } = useStateContext();
 
   function handleInputChange(evt: React.ChangeEvent<HTMLInputElement>) {
     let valid = false;
@@ -54,7 +48,6 @@ function SendAddressModal({ listItem }: any) {
           // {feeRate:15} optional
         );
         console.log({ tx });
-        console.log('send');
         handleClose();
       } catch (error) {
         console.error(error);

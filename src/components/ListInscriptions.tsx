@@ -2,62 +2,8 @@ import React from 'react';
 import { useStateContext } from '../context';
 import { chakra, Box, Flex, Grid } from '@chakra-ui/react';
 import ListCard from './ListCard';
-import CustomButton from './CustomButton';
-import SendAddressModal from './SendAddressModal';
 
-// const result = {
-//   list: [
-//     {
-//       inscriptionNumber: 15997,
-//       contentType: 'image/jpeg',
-//       content:
-//         'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-//       postageValue: 10000, //in sats,
-//       timeStamp: 1687920723,
-//     },
-//     {
-//       inscriptionNumber: 15997,
-//       contentType: 'image/jpeg',
-//       content:
-//         'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-//       postageValue: 10000, //in sats,
-//       timeStamp: 1687920723,
-//     },
-//     {
-//       inscriptionNumber: 15997,
-//       contentType: 'image/jpeg',
-//       content:
-//         'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-//       postageValue: 10000, //in sats,
-//       timeStamp: 1687920723,
-//     },
-//     {
-//       inscriptionNumber: 15997,
-//       contentType: 'image/jpeg',
-//       content:
-//         'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-//       postageValue: 10000, //in sats,
-//       timeStamp: 1687920723,
-//     },
-//     {
-//       inscriptionNumber: 15997,
-//       contentType: 'image/jpeg',
-//       content:
-//         'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-//       postageValue: 10000, //in sats,
-//       timeStamp: 1687920723,
-//     },
-//     {
-//       inscriptionNumber: 15997,
-//       contentType: 'image/jpeg',
-//       content:
-//         'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
-//       postageValue: 10000, //in sats,
-//       timeStamp: 1687920723,
-//     },
-//   ],
-//   total: 0,
-// };
+import SendAddressModal from './SendAddressModal';
 
 function ListInscriptions() {
   const [result, setResult] = React.useState({

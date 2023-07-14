@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import React from 'react';
 import {
   Box,
   Flex,
   Avatar,
-  Link,
   Button,
   Menu,
   MenuButton,
@@ -22,16 +21,8 @@ import CustomButton from './CustomButton';
 
 function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    unisatInstalled,
-    connected,
-    address,
-    balance,
-    handleAccountsChanged,
-    network,
-    setNetwork,
-  } = useStateContext();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { connected, address } = useStateContext();
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -45,7 +36,6 @@ function Navbar() {
                   <CustomButton
                     title={address?.slice(0, 6) + '...' + address?.slice(32)}
                   />
-                  {/* <CustomButton title={`Balance: ${balance?.total}`} /> */}
                 </Flex>
               ) : null}
               <Button onClick={toggleColorMode}>
